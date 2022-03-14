@@ -26,4 +26,4 @@ jobs:
     - name: Pack with dotnet
       run: dotnet pack PureManApplicationDevelopment --configuration Release
     - name: Push to Github Packages
-      run: dotnet nuget push ./PureManApplicationDevelopment/bin/Release/PureManApplicationDevelopment.*.nupkg --api-key ${{ secrets.GH_PACKAGES_TOKEN }} --source "github"
+      run: dotnet nuget push ./PureManApplicationDevelopment/bin/Release/PureManApplicationDevelopment.*.nupkg --source "https://nuget.pkg.github.com/blue-10/index.json" --api-key ${{ secrets.GH_PACKAGES_TOKEN }}
