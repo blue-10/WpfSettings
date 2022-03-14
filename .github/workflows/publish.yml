@@ -29,5 +29,5 @@ jobs:
     - name: Pack with dotnet
       run: dotnet pack PureManApplicationDevelopment --configuration Release
 
-    - name: Push to Github Packages
-      run: dotnet nuget push D:\a\WpfSettings\WpfSettings\PureManApplicationDevelopment\bin\Release\PureManApplicationDeployment.1.0.0.nupkg  --source "https://nuget.pkg.github.com/organizations/blue-10/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
+    - name: Push to Github Packages   
+      run: dotnet nuget push ./WpfSettings/PureManApplicationDevelopment/bin/Release/Dialogative.*.nupkg  --source "https://nuget.pkg.github.com/blue-10/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
