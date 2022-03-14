@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  PROJECT_PATH: 'PureManApplicationDevelopment/PureManApplicationDevelopment.csproj'
-
 jobs:
   build:
 
@@ -22,15 +19,18 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-
+  
     - name: Restore dependencies
-      run: dotnet restore ${{ env.PROJECT_PATH }}
-
+      run: dotnet restore
+      
     - name: Build
-      run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+      run: dotnet build --no-restore
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
 
     - name: Pack with dotnet
-      run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release
+      run: dotnet pack PureManApplicationDevelopment --configuration Release
 
     - name: Push to Github Packages
-      run: dotnet nuget push ./PureManApplicationDevelopment/bin/Release/PureManApplicationDevelopment.*.nupkg --source "https://nuget.pkg.github.com/blue-10/index.json" --api-key ${{ secrets.GH_PACKAGES_TOKEN }}
+      run: dotnet nuget push ./PureManApplicationDevelopment/bin/Release/PureManApplicationDevelopment.*.nupkg  --source "https://nuget.pkg.github.com/blue-10/index.json" --api-key ${{ secrets.GH_PACKAGES_TOKEN }}
