@@ -29,5 +29,8 @@ jobs:
     - name: Pack with dotnet
       run: dotnet pack PureManApplicationDevelopment --configuration Release
 
+    - name: debug
+      run: ls
+
     - name: Push to Github Packages   
-      run: dotnet nuget push ./PureManApplicationDevelopment/bin/Release/PureManApplicationDevelopment.1.0.0.nupkg  --source "https://nuget.pkg.github.com/blue-10/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push ./WpfSettings/WpfSettings/PureManApplicationDevelopment/bin/Release/PureManApplicationDevelopment.*.nupkg  --source "https://nuget.pkg.github.com/blue-10/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
