@@ -31,7 +31,7 @@ jobs:
 
     - name: debug
       run: |
-          cd PureManApplicationDevelopment
+          cd ./PureManApplicationDevelopment/bin/Release
           ls
 
     - name: Push to Github Packages   
