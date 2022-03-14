@@ -6,24 +6,31 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  PROJECT_PATH: 'PureManApplicationDevelopment/PureManApplicationDevelopment.csproj'
+
 jobs:
   build:
 
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+
     - name: Pack with dotnet
-      run: dotnet pack PureManApplicationDevelopment --configuration Release
+      run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release
+
     - name: Push to Github Packages
       run: dotnet nuget push ./PureManApplicationDevelopment/bin/Release/PureManApplicationDevelopment.*.nupkg --source "https://nuget.pkg.github.com/blue-10/index.json" --api-key ${{ secrets.GH_PACKAGES_TOKEN }}
