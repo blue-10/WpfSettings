@@ -2,9 +2,8 @@ name: .NET
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:
+    - 'v*'
 
 jobs:
   build:
@@ -26,8 +25,12 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
+    - name: 'Get Version'
+      id: version
+      uses: battila7/get-version-action@v2
+
     - name: Pack with dotnet
-      run: dotnet pack PureManApplicationDevelopment --configuration Release
+      run: dotnet pack PureManApplicationDevelopment --configuration Release -p:PackageVersion=${{ steps.version.outputs.version-without-v }}
 
     - name: Push to Github Packages   
       run: dotnet nuget push ./PureManApplicationDevelopment/bin/Release/PureManApplicationDeployment.*.nupkg -s "https://nuget.pkg.github.com/blue-10/index.json" -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
