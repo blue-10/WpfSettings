@@ -1,3 +1,10 @@
+### Note
+This is a fork of https://github.com/derskythe/WpfSettings.
+
+It is meant to upgrade the original project to .NET 6 and to publish it as a nuget package for easy use.
+
+The original README can be found below.
+
 ### Preface
 This project was created as a wrapper for the ClickOnce in .NET 5, because in this version ApplicationDeployment was not implemented.
 

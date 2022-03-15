@@ -1,12 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Title>PureManApplicationDeployment.Blue-10</Title>
+    <Description>Wrapper for ClickOnce in .NET 6</Description>
+    <VersionPrefix>0.1.0</VersionPrefix>
+
+    <PackageId>PureManApplicationDeployment.Blue-10</PackageId>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <PackageProjectUrl>https://github.com/blue-10/WpfSettings/</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/blue-10/WpfSettings/</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
     <TargetFramework>net6.0</TargetFramework>
-	<RepositoryUrl>https://github.com/blue-10/WpfSettings/</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Syroot.Windows.IO.KnownFolders" Version="1.2.3" />
+    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
 </Project>
