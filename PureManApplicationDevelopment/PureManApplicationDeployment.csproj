@@ -3,6 +3,7 @@
   <PropertyGroup>
     <Title>PureManApplicationDeployment.Blue-10</Title>
     <Description>Wrapper for ClickOnce in .NET 6</Description>
+    <Authors>derskythe, blue-10</Authors>
 
     <PackageId>PureManApplicationDeployment.Blue-10</PackageId>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
