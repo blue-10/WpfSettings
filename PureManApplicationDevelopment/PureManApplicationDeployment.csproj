@@ -11,7 +11,7 @@
 	  <RepositoryUrl>https://github.com/blue-10/WpfSettings/</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net5.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
